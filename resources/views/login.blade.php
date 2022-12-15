@@ -1,5 +1,5 @@
 <x-layoutLR title="Blog - Login" titleName='Login'>
-    <form action="">
+    <form method="POST" action="{{route('user.login_action')}}">
         @csrf
 
         <x-forms.text-input

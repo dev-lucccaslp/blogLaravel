@@ -1,5 +1,5 @@
 <x-layoutLR title="Blog - Register" titleName="Register">
-    <form action="">
+    <form method="POST" action="{{route('user.register_action')}}">
         @csrf
 
         <x-forms.text-input
