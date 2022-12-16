@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function index(){
         if(Auth::check()) {
-            return redirect()->route('home');
+            return redirect()->route('blog');
         }
 
         return view('login');
@@ -24,12 +24,16 @@ class AuthController extends Controller
          ]);
 
          if(Auth::attempt($validator)) {
-            return redirect()->route('home');
-         };
+            return redirect()->route('blog');
+         }
 
      }
 
     public function register(){
+        if(Auth::check()) {
+            return redirect()->route('blog');
+        }
+
         return view('register');
     }
 
@@ -51,4 +55,9 @@ class AuthController extends Controller
 
     }
 
+    public function logout() {
+        Auth::logout();
+
+        return redirect(route('home'));
+    }
 }
